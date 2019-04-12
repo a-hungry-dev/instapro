@@ -6,10 +6,6 @@ const postsSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: "users"
   },
-  caption: {
-    type: String,
-    required: true
-  },
   image: {
     type: String,
     required: true
