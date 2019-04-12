@@ -1,16 +1,16 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const users = new Schema({
-  first_name: {
+const userSchema = new Schema({
+  name: {
     type: String,
     required: true
   },
-  last_name: {
+  email: {
     type: String,
     required: true
   },
-  display_name: {
+  username: {
     type: String,
     required: true
   },
@@ -21,7 +21,13 @@ const users = new Schema({
   date: {
     type: Date,
     default: Date.now()
+  },
+  image: {
+    type: String
   }
+  // location: {
+  //   type: gps,
+  // },
 });
 
-module.exports = User = mongoose.model("users", users);
+module.exports = User = mongoose.model("users", userSchema);

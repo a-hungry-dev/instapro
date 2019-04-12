@@ -1,5 +1,6 @@
 const express = require("express");
 const router = express.Router();
+
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const passport = require("passport");
@@ -52,4 +53,3 @@ router.post("/", (req, res) => {
 router.delete("/:id", (req, res) => {
   //remove
 });
-module.exports = router;
