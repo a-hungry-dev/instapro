@@ -21,7 +21,7 @@ router.get("/", (req, res) => {
 });
 
 router.get("/:id", (req, res) => {
-  Posts.findById(+req.params.id)
+  Posts.findById(req.params.id)
     .sort({ date: -1 })
     .then(post => res.json(post))
     .catch(err =>
@@ -45,8 +45,8 @@ router.post("/", (req, res) => {
 
   newPost
     .save()
-    .then()
-    .catch();
+    .then(post => res.json(post))
+    .catch(err => res.json(err));
 });
 
 router.delete("/:id", (req, res) => {
