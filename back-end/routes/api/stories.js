@@ -3,14 +3,12 @@ const router = express.Router();
 const mongoose = require("mongoose");
 const passport = require("passport");
 
-const validationProfile = require("../../validation/profile");
+const validationProfile = require("../../validation/stories");
 
-const Profile = require("../../models/Profile");
+const Profile = require("../../models/Stories");
 
 const USer = require("../../models/Users");
 
-router.get("/test", (req, res) => res.json({ Message: "Profile route works" }));
-
-
+router.get("/test", (req, res) => res.json({ Message: "Stories route works" }));
 
 module.exports = router;
