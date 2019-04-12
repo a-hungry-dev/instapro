@@ -23,6 +23,10 @@ mongoose
   .then(() => console.log("connected to db"))
   .catch(err => console.log(err));
 
+app.use(passport.initialize());
+
+require("./config/passport")(passport);
+
 app.use("/api/users", users);
 
 const port = process.env.PORT || 5000;
