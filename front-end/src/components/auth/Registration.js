@@ -1,11 +1,11 @@
 //modukles
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-// import {connect} from "react-redux";
+import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 
 //actions
-// import { registerUser } from "./authactions/registeruser";
+import { registerUser } from "../../actions/AuthActions";
 
 //components
 import TextFieldGroup from "../common/TextFieldGroup";
@@ -25,6 +25,8 @@ class Registration extends Component {
     };
 
     this.onFacebookSignin = this.onFacebookSignin.bind(this);
+    this.onChange = this.onChange.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
   }
 
   // componentDidMount() {
@@ -63,7 +65,7 @@ class Registration extends Component {
 
     console.log(`signing up user with ${newUser}`);
     //create actions and reducers, bring in redux
-    // this.props.registerUser(newUser, this.props.history);
+    this.props.registerUser(newUser, this.props.history);
   }
 
   render() {
@@ -171,4 +173,15 @@ class Registration extends Component {
   }
 }
 
-export default Registration;
+Registration.propTypes = {
+  registerUser: PropTypes.func.isRequired,
+  auth: PropTypes.object.isRequired,
+  errors: PropTypes.object.isRequired
+};
+
+const mapStateToProps = state => ({ auth: state.auth, errors: state.errors });
+
+export default connect(
+  mapStateToProps,
+  { registerUser }
+)(withRouter(Registration));

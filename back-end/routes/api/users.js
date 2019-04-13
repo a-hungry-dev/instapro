@@ -31,18 +31,13 @@ router.post("/register", (req, res) => {
           email: req.body.email,
           username: req.body.username,
           password: bcryptPassword(req.body.password),
-          // password: req.body.password,
           image: req.body.image
         });
         newUser
           .save()
           .then(user => res.json(user))
           .catch(err => console.log(err));
-        // });
-        // bcrypt.genSalt(10, (err, salt) => {
-        //   bcrypt.hash(newUser.password, salt, (err, hash) => {
-        //     newUser.password = hash;
-        // });
+
       }
     })
     .catch(err => console.log(err));

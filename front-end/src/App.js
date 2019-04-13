@@ -5,6 +5,8 @@ import { Provider } from "react-redux";
 
 //jwt-decode, store, setauth
 //helpers
+import store from "./store";
+import setAuthToken from "./utils/setAuthToken";
 
 //actions
 
@@ -22,13 +24,15 @@ class App extends Component {
   render() {
     return (
       //provider for store here
-      <Router>
-        <div className="App">
-          {/* <Navbar /> */}
-          <Route exact path="/" component={Landing} />
-          <Footer />
-        </div>
-      </Router>
+      <Provider store={store}>
+        <Router>
+          <div className="App">
+            {/* <Navbar /> */}
+            <Route exact path="/" component={Landing} />
+            <Footer />
+          </div>
+        </Router>
+      </Provider>
     );
   }
 }
