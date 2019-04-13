@@ -13,9 +13,9 @@ import setAuthToken from "./utils/setAuthToken";
 import "./App.css";
 
 //components
-// import Navbar from "./components/layout/Navbar";
-import Registration from "./components/auth/Registration";
+import Navbar from "./components/layout/Navbar";
 import Landing from "./components/layout/Landing";
+import Login from "./components/auth/Login";
 import Footer from "./components/layout/Footer";
 
 //check auth token here
@@ -29,6 +29,7 @@ class App extends Component {
           <div className="App">
             {/* <Navbar /> */}
             <Route exact path="/" component={Landing} />
+            <Route exact path="/login" component={Login} />
             <Footer />
           </div>
         </Router>

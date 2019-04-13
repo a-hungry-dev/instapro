@@ -20,10 +20,12 @@ router.post("/register", (req, res) => {
 
   if (!isValid) return res.status(400).json(errors);
 
-  User.findOne({ email: req.body.email })
+  User.findOne({
+    $or: [{ email: req.body.email }, { username: req.body.username }]
+  })
     .then(user => {
       if (user) {
-        errors.user = "Email already exists. Forgot your password?";
+        errors.user = "Account already exists. Forgot your password?";
         return res.status(400).json(errors);
       } else {
         const newUser = new User({
@@ -37,7 +39,6 @@ router.post("/register", (req, res) => {
           .save()
           .then(user => res.json(user))
           .catch(err => console.log(err));
-
       }
     })
     .catch(err => console.log(err));
@@ -47,7 +48,6 @@ const bcryptPassword = password => {
   bcrypt.genSalt(10, (err, salt) => {
     bcrypt.hash(password, salt, (err, hash) => {
       password = hash;
-      console.log(password);
     });
   });
   return password;
