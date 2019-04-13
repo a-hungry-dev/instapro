@@ -1,3 +1,15 @@
 .landing {
   background-color: #fafafa;
 }
+
+.fadeBackground {
+  background-image: url(../../images/InstaPRo.png);
+}
+
+@keyframes fadeImage {
+  0% {
+    opacity: 1;
+  }
+  50% {
+  }
+}
