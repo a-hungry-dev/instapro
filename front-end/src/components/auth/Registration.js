@@ -7,10 +7,9 @@ import { withRouter } from "react-router-dom";
 //actions
 
 //components
-import InputGroup from "../common/InputGroup";
+// import InputGroup from "../common/InputGroup";
 
 //css
-import RegistrationSytles from "./Registration.css";
 
 class Registration extends Component {
   constructor() {
@@ -23,22 +22,43 @@ class Registration extends Component {
       password_confirm: "",
       errors: {}
     };
+
+    this.onFacebookSignin = this.onFacebookSignin.bind(this);
   }
+
+  onFacebookSignin(e) {
+    console.log("signing up with facebook");
+  }
+
   state = {};
   render() {
     //bring in errors
     const { errors } = this.state;
     return (
-      <div className="register">
+      <div className="register bg-white">
         <div className="container">
           <div className="row">
-            <div className="col-md-6">{/* image slider, fade to next */}</div>
-            <div className="col-md-6">
+            <div className="col-md-12">
               {/* <img src="logo" alt="logo" /> */}
               <h1 className="display-4 text-center">InstaPro</h1>
               <p className="lead text-center">
                 Sign up to see photos and videos from your friends and others
                 around the world.
+                {/* <InputGroup className="btn btn-primary">
+                  Log in with Facebook
+                </InputGroup> */}
+                <br />
+                <button
+                  className="btn btn-info"
+                  type="button"
+                  onClick={this.onFacebookSignin.bind(this)}
+                >
+                  Log in with Facebook
+                </button>
+                <br />
+                Or
+                <br />
+                
               </p>
             </div>
           </div>

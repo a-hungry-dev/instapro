@@ -4,6 +4,8 @@ import PropTypes from "prop-types";
 // import { connect } from "react-redux";
 import Registration from "../auth/Registration";
 
+//css
+import "./Landing.css";
 class Landing extends Component {
   componentDidMount() {
     //checkauth, redirect to main
@@ -11,7 +13,7 @@ class Landing extends Component {
 
   render() {
     return (
-      <div className="landing">
+      <div className="landing h-100">
         <div className="landing-inner text-dark">
           <div className="container">
             <div className="row">
