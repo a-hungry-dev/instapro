@@ -22,16 +22,16 @@ class Login extends Component {
       errors: {}
     };
 
-    this.onFacebookSignin = this.onFacebookSignin.bind(this);
+    this.onFacebookLogin = this.onFacebookLogin.bind(this);
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
   }
 
-  // componentDidMount() {
-  //   if (this.props.auth.isAuthenticated) {
-  //     this.props.history.psuh("/feed");
-  //   }
-  // }
+  componentDidMount() {
+    if (this.props.auth.isAuthenticated) {
+      this.props.history.psuh("/feed");
+    }
+  }
   //bring in auth
   //WARNING! To be deprecated in React v17. Use new lifecycle static getDerivedStateFromProps instead.
   componentWillReceiveProps(nextProps) {
@@ -44,7 +44,7 @@ class Login extends Component {
     this.setState({ [e.target.name]: e.target.value });
   }
 
-  onFacebookSignin(e) {
+  onFacebookLogin(e) {
     console.log("signing up with facebook");
     //implement facebook sign up
   }
@@ -72,8 +72,8 @@ class Login extends Component {
       <React.Fragment>
         <div className="register bg-white">
           <div className="container">
-            <div className="row">
-              <div className="col-md-12">
+            <div className="row justify-content-center">
+              <div className="col-md-6">
                 {/* <img src="logo" alt="logo" /> */}
                 <h1 className="display-4 text-center">InstaPro</h1>
                 <p className="lead text-center">
@@ -83,7 +83,7 @@ class Login extends Component {
                 <button
                   className="btn btn-info"
                   type="button"
-                  onClick={this.onFacebookSignin.bind(this)}
+                  onClick={this.onFacebookLogin.bind(this)}
                 >
                   Log in with Facebook
                 </button>
@@ -91,14 +91,6 @@ class Login extends Component {
                 Or
                 <br />
                 <form noValidate onSubmit={this.onSubmit}>
-                  <TextFieldGroup
-                    placeholder="Name"
-                    name="name"
-                    type="text"
-                    value={this.state.name}
-                    onChange={this.onChange}
-                    error={errors.name}
-                  />
                   <TextFieldGroup
                     placeholder="Username"
                     name="username"
@@ -122,14 +114,6 @@ class Login extends Component {
                     value={this.state.password}
                     onChange={this.onChange}
                     error={errors.password}
-                  />
-                  <TextFieldGroup
-                    placeholder="Confirm Password"
-                    name="password_confirm"
-                    type="text"
-                    value={this.state.password_confirm}
-                    onChange={this.onChange}
-                    error={errors.password_confirm}
                   />
                   <input
                     type="submit"
@@ -157,9 +141,9 @@ class Login extends Component {
           </div>
         </div>
         <div className="register mt-1">
-          Have an account?{" "}
+          Don't have an account?{" "}
           <a href="/login" title="Login">
-            Log in
+            Sing up
           </a>
         </div>
         <div>
