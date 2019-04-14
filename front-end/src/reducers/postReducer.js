@@ -2,7 +2,8 @@ import {
   TEST_DISPATCH,
   POST_LOADING,
   GET_POST,
-  GET_POSTS
+  GET_POSTS,
+  ADD_POST
 } from "../actions/Types";
 
 //creates initial state
@@ -23,6 +24,12 @@ export default function(state = initialState, action) {
       return { ...state, posts: action.payload, loading: false };
     case GET_POST:
       return { ...state, post: action.payload, loading: false };
+    case ADD_POST:
+      return {
+        ...state,
+        posts: [action.payload, ...state.posts],
+        loading: false
+      };
     default:
       return state;
   }

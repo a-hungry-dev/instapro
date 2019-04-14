@@ -31,20 +31,23 @@ router.put("/", (req, res) => {
 });
 
 // Add post
-//auth
-router.post("/", (req, res) => {
-  //validation
+router.post(
+  "/",
+  passport.authenticate("jwt", { session: false }),
+  (req, res) => {
+    //validation
+    const newPost = new Posts({
+      image: req.body.image,
+      comments: [{ user: req.user, text: req.body.text }],
+      user: req.user
+    });
 
-  const newPost = new Posts({
-    likes: [],
-    comments: []
-  });
-
-  newPost
-    .save()
-    .then(post => res.json(post))
-    .catch(err => res.json(err));
-});
+    newPost
+      .save()
+      .then(post => res.json(post))
+      .catch(err => res.json(err));
+  }
+);
 
 router.delete("/:id", (req, res) => {
   //remove

@@ -103,7 +103,6 @@ router.get(
   "/auth",
   passport.authenticate("jwt", { session: false }), //comment to toggle auth test
   (req, res) => {
-    console.log("do you get here");
     //where user it not set to blocked, hidden or hasn't blocked current user?
     User.find()
       .then(users => {

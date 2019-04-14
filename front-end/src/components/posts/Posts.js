@@ -6,25 +6,29 @@ import { connect } from "react-redux";
 // import PostForm from "./PostForm";
 import PostList from "./PostList";
 import Post from "./Post";
+import PostForm from "./PostForm";
 import { getPosts } from "../../actions/PostActions";
 
 class Posts extends Component {
   componentDidMount() {
     this.props.getPosts();
   }
+
   render() {
     const { posts, loading } = this.props;
 
     let postContent;
 
-    if (posts === null || loading) {
+    if (posts.posts === null || loading) {
       // postContent = <Spinner />;
       postContent = <div>No Posts</div>;
     } else {
-      if (posts.length > 1) {
-        postContent = posts.map(post => <Post key={post._id} post={post} />);
-      } else {
-        postContent = <Post key={posts._id} post={posts} />;
+      if (posts.posts.length > 1) {
+        postContent = posts.posts.map(post => (
+          <Post key={post._id} post={post} />
+        ));
+      } else if (posts.length != 0) {
+        postContent = <Post post={posts.posts} />;
       }
     }
 
@@ -33,7 +37,7 @@ class Posts extends Component {
         <div className="container">
           <div className="row">
             <div className="col-md-12">
-              {/* <PostForm /> */}
+              <PostForm />
               {postContent}
             </div>
           </div>
