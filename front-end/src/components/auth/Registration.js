@@ -31,7 +31,7 @@ class Registration extends Component {
 
   // componentDidMount() {
   //   if (this.props.auth.isAuthenticated) {
-  //     this.props.history.psuh("/feed");
+  //     this.props.history.push("/feed");
   //   }
   // }
   //bring in auth

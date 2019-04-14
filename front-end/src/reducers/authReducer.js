@@ -1,5 +1,4 @@
 import { TEST_DISPATCH, SET_CURRENT_USER } from "../actions/Types";
-import { isMaster } from "cluster";
 import isEmpty from "../validation/is-empty";
 
 //creates initial state
@@ -16,7 +15,7 @@ export default function(state = initialState, action) {
     case SET_CURRENT_USER:
       return {
         ...state,
-        isAuthenticated: !isEmpty(payload),
+        isAuthenticated: !isEmpty(action.payload),
         user: action.payload
       };
     default:

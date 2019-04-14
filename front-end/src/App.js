@@ -2,6 +2,7 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { Provider } from "react-redux";
+import jwt_decode from "jwt-decode";
 
 //jwt-decode, store, setauth
 //helpers
@@ -30,7 +31,7 @@ if (localStorage.token) {
   if (decoded_token.exp < currentTime) {
     // store.dispatch() logoutuser
     //
-    window.location.href = "/login";
+    // window.location.href = "/login";
   }
 }
 
