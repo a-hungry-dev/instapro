@@ -82,7 +82,7 @@ class Registration extends Component {
             <div className="row">
               <div className="col-md-12">
                 {/* <img src="logo" alt="logo" /> */}
-                <i class="fas fa-camera-retro fa-5x" />
+                <i className="fas fa-camera-retro fa-5x" />
                 <h1 className="display-4 text-center">InstaPro</h1>
                 <p className="lead text-center">
                   Sign up to see photos and videos from your friends and others

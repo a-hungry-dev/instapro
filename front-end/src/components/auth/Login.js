@@ -74,7 +74,7 @@ class Login extends Component {
             <div className="row justify-content-center">
               <div className="col-md-6">
                 {/* <img src="logo" alt="logo" /> */}
-                <i class="fas fa-camera-retro fa-x5" />
+                <i className="fas fa-camera-retro fa-x5" />
                 <h1 className="display-4 text-center">InstaPro</h1>
                 <form noValidate onSubmit={this.onSubmit}>
                   <TextFieldGroup

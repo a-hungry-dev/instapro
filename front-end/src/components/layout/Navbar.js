@@ -26,7 +26,7 @@ export class Navbar extends Component {
       <nav className="navbar navbar-bottom navbar-expand-sm navbar-light bg-white">
         <div className="container">
           <Link className="navbar-brand" to="/">
-            <i class="fas fa-camera-retro fa-x5" /> | InstaPro
+            <i className="fas fa-camera-retro fa-x5" /> | InstaPro
           </Link>
 
           <button
@@ -41,7 +41,7 @@ export class Navbar extends Component {
           <div className="collapse navbar-collapse" id="mobile-nav">
             <ul className="navbar-nav ml-auto">
               <li className="nav-item">
-                <SearchInputGroup
+                {/* <SearchInputGroup
                   placeholder="Search..."
                   name="search"
                   icon="fas fa-search"
@@ -49,24 +49,24 @@ export class Navbar extends Component {
                   value={this.state.name}
                   onChange={this.onChange}
                   error={errors.name}
-                />
+                /> */}
               </li>
             </ul>
             <ul className="navbar-nav ml-auto">
               <li className="nav-item">
                 <Link className="nav-link" to="/explore">
-                  <i class="far fa-compass fa-lg" />
+                  <i className="far fa-compass fa-lg" />
                 </Link>
               </li>
               <li className="nav-item">
                 {/* recent activity */}
                 <span className="nav-link">
-                  <i class="far fa-heart fa-lg" />
+                  <i className="far fa-heart fa-lg" />
                 </span>
               </li>
               <li className="nav-item">
                 <Link className="nav-link" to="/profile">
-                  <i class="far fa-user fa-lg" />
+                  <i className="far fa-user fa-lg" />
                 </Link>
               </li>
             </ul>

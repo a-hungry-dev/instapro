@@ -24,7 +24,7 @@ export class Dashboard extends Component {
         <Navbar />
         <div className="container">
           <div className="row">
-            <div className="col-md-8 mt-20">
+            <div className="col-md-8">
               <Posts />
             </div>
             <div className="col-md-4">

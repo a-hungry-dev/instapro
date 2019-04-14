@@ -31,11 +31,11 @@ router.put("/", (req, res) => {
 });
 
 // Add post
+//auth
 router.post("/", (req, res) => {
   //validation
 
   const newPost = new Posts({
-    caption: req.body.caption,
     likes: [],
     comments: []
   });
