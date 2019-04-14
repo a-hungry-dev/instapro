@@ -9,7 +9,9 @@ import store from "./store";
 import setAuthToken from "./utils/setAuthToken";
 
 //actions
+import { setCurrentUser } from "./actions/AuthActions";
 
+//css
 import "./App.css";
 
 //components
@@ -19,6 +21,18 @@ import Login from "./components/auth/Login";
 import Footer from "./components/layout/Footer";
 
 //check auth token here
+
+if (localStorage.token) {
+  setAuthToken(localStorage.token);
+  const decoded_token = jwt_decode(localStorage.token);
+  store.dispatch(setCurrentUser(decoded_token));
+  const currentTime = Date.now() / 1000;
+  if (decoded_token.exp < currentTime) {
+    // store.dispatch() logoutuser
+    //
+    window.location.href = "/login";
+  }
+}
 
 class App extends Component {
   render() {

@@ -1,4 +1,4 @@
-import { TEST_DISPATCH, GET_ERRORS } from "./Types";
+import { TEST_DISPATCH, GET_ERRORS, SET_CURRENT_USER } from "./Types";
 import Axios from "axios";
 import jwt_decode from "jwt-decode";
 
@@ -21,11 +21,22 @@ export const registerUser = (userData, history) => dispatch => {
 
 export const loginUser = (userData, history) => dispatch => {
   Axios.post("/api/users/login", userData)
-    .then(res => history.push("/feed")) //login auto?
+    .then(res => {
+      const { token } = res.data;
+      localStorage.setItem("token", token);
+      setAuthToken(token);
+      const decoded_token = jwt_decode(token);
+      dispatch(setCurrentUser(decoded_token));
+      // history.push("/feed");
+    }) //login auto?
     .catch(err =>
       dispatch({
         type: GET_ERRORS,
         payload: err.response.data
       })
     );
+};
+
+export const setCurrentUser = decoded_token => {
+  return { type: SET_CURRENT_USER, payload: decoded_token };
 };

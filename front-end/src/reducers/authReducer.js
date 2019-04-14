@@ -1,5 +1,6 @@
-import { TEST_DISPATCH } from "../actions/Types";
-// import isEmpty from "../validation/is-empty";
+import { TEST_DISPATCH, SET_CURRENT_USER } from "../actions/Types";
+import { isMaster } from "cluster";
+import isEmpty from "../validation/is-empty";
 
 //creates initial state
 const initialState = {
@@ -12,7 +13,12 @@ export default function(state = initialState, action) {
     case TEST_DISPATCH:
       console.log("testing dispatch");
       return { ...state, user: action.payload };
-
+    case SET_CURRENT_USER:
+      return {
+        ...state,
+        isAuthenticated: !isEmpty(payload),
+        user: action.payload
+      };
     default:
       return state;
   }

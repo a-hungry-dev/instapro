@@ -22,11 +22,8 @@ router.get("/", (req, res) => {
 
 router.get("/:id", (req, res) => {
   Posts.findById(req.params.id)
-    .sort({ date: -1 })
     .then(post => res.json(post))
-    .catch(err =>
-      res.status(404).json({ message: "There aren't any posts yet..." })
-    );
+    .catch(err => res.status(404).json({ message: "This post doesn't exist" }));
 });
 
 router.put("/", (req, res) => {
