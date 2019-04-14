@@ -16,20 +16,12 @@ import { setCurrentUser, logoutUser } from "./actions/AuthActions";
 import "./App.css";
 
 //components
-import Navbar from "./components/layout/Navbar";
-//dashboard
-//edit profile
-//profiles
-//profile
-//posts
-//post
-//notfound
+import PrivateRoute from "./components/common/PrivateRoute";
 
 import Landing from "./components/layout/Landing";
 import Login from "./components/auth/Login";
 import Footer from "./components/layout/Footer";
-
-//check auth token here
+import Dashboard from "./components/dashboard/Dashboard";
 
 if (localStorage.token) {
   setAuthToken(localStorage.token);
@@ -51,9 +43,12 @@ class App extends Component {
       <Provider store={store}>
         <Router>
           <div className="App">
-            {/* <Navbar /> */}
             <Route exact path="/" component={Landing} />
             <Route exact path="/login" component={Login} />
+
+            <Switch>
+              <PrivateRoute exact path="/dashboard" component={Dashboard} />
+            </Switch>
             <Footer />
           </div>
         </Router>

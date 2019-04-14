@@ -76,20 +76,6 @@ class Login extends Component {
                 {/* <img src="logo" alt="logo" /> */}
                 <i class="fas fa-camera-retro fa-x5" />
                 <h1 className="display-4 text-center">InstaPro</h1>
-                <p className="lead text-center">
-                  Log in to see photos and videos from your friends and others
-                  around the world.
-                </p>
-                <button
-                  className="btn btn-info"
-                  type="button"
-                  onClick={this.onFacebookLogin.bind(this)}
-                >
-                  Log in with Facebook
-                </button>
-                <br />
-                Or
-                <br />
                 <form noValidate onSubmit={this.onSubmit}>
                   <TextFieldGroup
                     placeholder="Username"
@@ -121,21 +107,19 @@ class Login extends Component {
                     className="btn btn-info btn-block mt-4"
                   />
                 </form>
-                <p>
-                  By logging in, you agree to our{" "}
-                  <a href="/terms" title="Terms">
-                    Terms
-                  </a>{" "}
-                  . Learn how we collect, use and share your data in our{" "}
-                  <a href="/data" title="Data">
-                    Data Policy
-                  </a>
-                  and how we use cookies and similar technology in our{" "}
-                  <a href="/cookies" title="Cookies">
-                    Cookies Policy
-                  </a>{" "}
-                  .
-                </p>
+                <br />
+                Or
+                <br />
+                <button
+                  className="btn btn-info"
+                  type="button"
+                  onClick={this.onFacebookLogin.bind(this)}
+                >
+                  Log in with Facebook
+                </button>
+                <a href="/passwordReset" title="Reset Password">
+                  Forgot passowrd?
+                </a>{" "}
               </div>
             </div>
           </div>
