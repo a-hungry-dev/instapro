@@ -62,9 +62,7 @@ class Login extends Component {
       password: this.state.password
     };
 
-    console.log(`logging in user with ${newUser}`);
-    //create actions and reducers, bring in redux
-    this.props.loginUser(newUser, this.props.history);
+    this.props.loginUser(newUser);
   }
 
   render() {
@@ -76,6 +74,7 @@ class Login extends Component {
             <div className="row justify-content-center">
               <div className="col-md-6">
                 {/* <img src="logo" alt="logo" /> */}
+                <i class="fas fa-camera-retro fa-x5" />
                 <h1 className="display-4 text-center">InstaPro</h1>
                 <p className="lead text-center">
                   Log in to see photos and videos from your friends and others
@@ -118,12 +117,12 @@ class Login extends Component {
                   />
                   <input
                     type="submit"
-                    value="Next"
+                    value="Login"
                     className="btn btn-info btn-block mt-4"
                   />
                 </form>
                 <p>
-                  By signing up, you agree to our{" "}
+                  By logging in, you agree to our{" "}
                   <a href="/terms" title="Terms">
                     Terms
                   </a>{" "}
@@ -171,4 +170,3 @@ export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(Login);
-  

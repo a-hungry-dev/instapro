@@ -29,14 +29,19 @@ class Registration extends Component {
     this.onSubmit = this.onSubmit.bind(this);
   }
 
-  // componentDidMount() {
-  //   if (this.props.auth.isAuthenticated) {
-  //     this.props.history.push("/feed");
-  //   }
-  // }
-  //bring in auth
-  //WARNING! To be deprecated in React v17. Use new lifecycle static getDerivedStateFromProps instead.
+  componentDidMount() {
+    if (this.props.auth.isAuthenticated) {
+      this.props.history.push("/dashboard");
+    } else {
+      console.log("not authorized");
+    }
+  }
+
   componentWillReceiveProps(nextProps) {
+    if (nextProps.auth.isAuthenticated) {
+      this.props.history.push("/dashboard");
+    }
+
     if (nextProps.errors) {
       this.setState({ errors: nextProps.errors });
     }
@@ -77,6 +82,7 @@ class Registration extends Component {
             <div className="row">
               <div className="col-md-12">
                 {/* <img src="logo" alt="logo" /> */}
+                <i class="fas fa-camera-retro fa-5x" />
                 <h1 className="display-4 text-center">InstaPro</h1>
                 <p className="lead text-center">
                   Sign up to see photos and videos from your friends and others

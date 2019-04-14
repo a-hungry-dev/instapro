@@ -10,7 +10,7 @@ import store from "./store";
 import setAuthToken from "./utils/setAuthToken";
 
 //actions
-import { setCurrentUser } from "./actions/AuthActions";
+import { setCurrentUser, logoutUser } from "./actions/AuthActions";
 
 //css
 import "./App.css";
@@ -37,10 +37,10 @@ if (localStorage.token) {
   store.dispatch(setCurrentUser(decoded_token));
   const currentTime = Date.now() / 1000;
   if (decoded_token.exp < currentTime) {
-    // store.dispatch() logoutuser
+    store.dispatch(logoutUser());
     //
     console.log(currentTime, decoded_token.exp);
-    // window.location.href = "/login";
+    window.location.href = "/login";
   }
 }
 
