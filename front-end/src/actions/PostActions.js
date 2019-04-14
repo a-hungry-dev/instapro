@@ -1,10 +1,10 @@
 import Axios from "axios";
 
 import {
-  TEST_DISPATCH,
+  // TEST_DISPATCH,
   GET_ERRORS,
   GET_POSTS,
-  GET_POST,
+  // GET_POST,
   POST_LOADING,
   ADD_POST
 } from "./Types";

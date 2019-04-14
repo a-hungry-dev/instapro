@@ -1,17 +1,16 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import classNames from "classnames";
-import { Link } from "react-router-dom";
+// import classNames from "classnames";
+// import { Link } from "react-router-dom";
 import checkDate from "../../utils/checkDate";
 //like post, flat post, add comment, actions(report innappropritate, unfoolow, go to post, cancel)
 
 export class Post extends Component {
   render() {
-    const { post, auth } = this.props;
-
+    const { post } = this.props;
+    //add auth here to check if the user is blocked? idk
     let comments;
-    console.log(post);
     //display first comment in array, then display in descending order, first comment needs to be caption, ther's no heart for it
     if (post.comments === null || post.comments === undefined) {
       comments = "";

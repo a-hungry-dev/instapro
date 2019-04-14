@@ -3,8 +3,6 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 
 // import Spinner from "../common/Spinner";
-// import PostForm from "./PostForm";
-import PostList from "./PostList";
 import Post from "./Post";
 import PostForm from "./PostForm";
 import { getPosts } from "../../actions/PostActions";
@@ -23,12 +21,10 @@ class Posts extends Component {
       // postContent = <Spinner />;
       postContent = <div>No Posts</div>;
     } else {
-      if (posts.posts.length > 1) {
+      if (posts.posts.length > 0) {
         postContent = posts.posts.map(post => (
           <Post key={post._id} post={post} />
         ));
-      } else if (posts.length != 0) {
-        postContent = <Post post={posts.posts} />;
       }
     }
 

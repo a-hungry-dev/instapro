@@ -1,4 +1,4 @@
-import { TEST_DISPATCH, GET_ERRORS, SET_CURRENT_USER } from "./Types";
+import { GET_ERRORS, SET_CURRENT_USER } from "./Types";
 import Axios from "axios";
 import jwt_decode from "jwt-decode";
 

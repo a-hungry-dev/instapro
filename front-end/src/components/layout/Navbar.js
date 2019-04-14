@@ -3,9 +3,9 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 
-import { logoutUser } from "../../actions/AuthActions";
+// import { logoutUser } from "../../actions/AuthActions";
 
-import SearchInputGroup from "../common/SearchInputGroup";
+// import SearchInputGroup from "../common/SearchInputGroup";
 
 export class Navbar extends Component {
   constructor() {
@@ -21,12 +21,12 @@ export class Navbar extends Component {
   }
 
   render() {
-    const { errors } = this.state;
+    // const { errors } = this.state;
     return (
       <nav className="navbar navbar-bottom navbar-expand-sm navbar-light bg-white">
         <div className="container">
           <Link className="navbar-brand" to="/">
-            <i className="fas fa-camera-retro fa-x5" /> | InstaPro
+            <i className="fas fa-camera-retro fa-lg" /> | InstaPro
           </Link>
 
           <button
@@ -41,15 +41,17 @@ export class Navbar extends Component {
           <div className="collapse navbar-collapse" id="mobile-nav">
             <ul className="navbar-nav ml-auto">
               <li className="nav-item">
-                {/* <SearchInputGroup
-                  placeholder="Search..."
-                  name="search"
-                  icon="fas fa-search"
-                  type="text"
-                  value={this.state.name}
-                  onChange={this.onChange}
-                  error={errors.name}
-                /> */}
+                {
+                  // <SearchInputGroup
+                  //   placeholder="Search..."
+                  //   name="search"
+                  //   icon="fas fa-search"
+                  //   type="text"
+                  //   value={this.state.name}
+                  //   onChange={this.onChange}
+                  //   error={errors.name}
+                  // />
+                }
               </li>
             </ul>
             <ul className="navbar-nav ml-auto">
@@ -77,9 +79,11 @@ export class Navbar extends Component {
   }
 }
 
-Navbar.propTypes = {};
+Navbar.propTypes = {
+  errors: PropTypes.object.isRequired
+};
 
-const mapStateToProps = state => ({});
+const mapStateToProps = state => ({ errors: state.errors });
 
 const mapDispatchToProps = {};
 

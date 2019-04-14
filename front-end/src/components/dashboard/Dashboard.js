@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
+// import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 
-import PrivateRoute from "../common/PrivateRoute";
+// import PrivateRoute from "../common/PrivateRoute";
 
 import Posts from "../posts/Posts";
 
@@ -18,7 +18,7 @@ import Navbar from "../layout/Navbar";
 
 export class Dashboard extends Component {
   render() {
-    const { user, isAuthenticated } = this.props.auth;
+    // const { user, isAuthenticated } = this.props.auth;
     return (
       <React.Fragment>
         <Navbar />

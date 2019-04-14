@@ -12,6 +12,8 @@ export class PostForm extends Component {
     this.state = {
       text: "",
       image: "",
+      //change to allow multiple files
+      file: null,
       errors: {}
     };
     this.onChange = this.onChange.bind(this);
@@ -34,13 +36,31 @@ export class PostForm extends Component {
     this.props.addPost(newPost);
     this.setState({ text: "", image: "" });
   }
+  handleFileSelect = e => {
+    console.log(e.target.files);
+    this.setState({ file: e.target.files[0] });
+  };
+
+  handleFileUpload = () => {
+    const fd = new FormData();
+    fd.append("image", this.state.file, this.file.name);
+  };
 
   render() {
     const { errors } = this.state;
 
     return (
       <div className="post-form mb-3">
-        <input type="file" />
+        <input
+          style={{ display: "none" }}
+          type="file"
+          onChange={this.handleFileSelect}
+          ref={fileUpload => (this.fileUpload = fileUpload)}
+        />
+        <i
+          className="fas fa-file-upload fa-5x"
+          onClick={() => this.fileUpload.click()}
+        />
         <form noValidate onSubmit={this.onSubmit}>
           <TextFieldGroup
             placeholder="Image"
