@@ -17,6 +17,14 @@ import "./App.css";
 
 //components
 import Navbar from "./components/layout/Navbar";
+//dashboard
+//edit profile
+//profiles
+//profile
+//posts
+//post
+//notfound
+
 import Landing from "./components/layout/Landing";
 import Login from "./components/auth/Login";
 import Footer from "./components/layout/Footer";
@@ -31,6 +39,7 @@ if (localStorage.token) {
   if (decoded_token.exp < currentTime) {
     // store.dispatch() logoutuser
     //
+    console.log(currentTime, decoded_token.exp);
     // window.location.href = "/login";
   }
 }

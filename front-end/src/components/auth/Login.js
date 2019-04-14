@@ -2,7 +2,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { withRouter } from "react-router-dom";
+// import { withRouter } from "react-router-dom";
 
 //actions
 import { loginUser } from "../../actions/AuthActions";
@@ -14,11 +14,9 @@ class Login extends Component {
   constructor() {
     super();
     this.state = {
-      name: "",
       username: "",
       email: "",
       password: "",
-      password_confirm: "",
       errors: {}
     };
 
@@ -29,12 +27,17 @@ class Login extends Component {
 
   componentDidMount() {
     if (this.props.auth.isAuthenticated) {
-      this.props.history.push("/feed");
+      this.props.history.push("/dashboard");
+    } else {
+      console.log("not authorized");
     }
   }
-  //bring in auth
-  //WARNING! To be deprecated in React v17. Use new lifecycle static getDerivedStateFromProps instead.
+
   componentWillReceiveProps(nextProps) {
+    if (nextProps.auth.isAuthenticated) {
+      this.props.history.push("/dashboard");
+    }
+
     if (nextProps.errors) {
       this.setState({ errors: nextProps.errors });
     }
@@ -45,7 +48,7 @@ class Login extends Component {
   }
 
   onFacebookLogin(e) {
-    console.log("signing up with facebook");
+    console.log("logging up with facebook");
     //implement facebook sign up
   }
 
@@ -54,14 +57,12 @@ class Login extends Component {
     e.preventDefault();
 
     const newUser = {
-      name: this.state.name,
       email: this.state.email,
       username: this.state.username,
-      password: this.state.password,
-      password_confirm: this.state.password_confirm
+      password: this.state.password
     };
 
-    console.log(`signing up user with ${newUser}`);
+    console.log(`logging in user with ${newUser}`);
     //create actions and reducers, bring in redux
     this.props.loginUser(newUser, this.props.history);
   }
@@ -70,14 +71,14 @@ class Login extends Component {
     const { errors } = this.state;
     return (
       <React.Fragment>
-        <div className="register bg-white">
+        <div className="login bg-white">
           <div className="container">
             <div className="row justify-content-center">
               <div className="col-md-6">
                 {/* <img src="logo" alt="logo" /> */}
                 <h1 className="display-4 text-center">InstaPro</h1>
                 <p className="lead text-center">
-                  Sign up to see photos and videos from your friends and others
+                  Log in to see photos and videos from your friends and others
                   around the world.
                 </p>
                 <button
@@ -140,10 +141,10 @@ class Login extends Component {
             </div>
           </div>
         </div>
-        <div className="register mt-1">
+        <div className="login mt-1">
           Don't have an account?{" "}
-          <a href="/login" title="Login">
-            Sing up
+          <a href="/" title="Sign up">
+            Sign up
           </a>
         </div>
         <div>
@@ -162,8 +163,12 @@ Login.propTypes = {
 };
 
 const mapStateToProps = state => ({ auth: state.auth, errors: state.errors });
+const mapDispatchToProps = {
+  loginUser
+};
 
 export default connect(
   mapStateToProps,
-  { loginUser }
-)(withRouter(Login));
+  mapDispatchToProps
+)(Login);
+  
