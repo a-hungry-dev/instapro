@@ -17,7 +17,7 @@ export const postLoading = () => {
 
 export const getPosts = () => dispatch => {
   dispatch(postLoading());
-  Axios.get("/api/posts")
+  Axios.get("loclahost:5000/api/posts")
     .then(res => dispatch({ type: GET_POSTS, payload: res.data }))
     .catch(err => dispatch({ type: GET_POSTS, payload: {} }));
 };
