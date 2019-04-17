@@ -29,7 +29,7 @@ router.post(
   "/",
   passport.authenticate("jwt", { session: false }),
   (req, res) => {
-    console.log("herefdsfdsfs");
+    console.log("this");
     new formidable.IncomingForm()
       .parse(req, (err, fields, files) => {
         console.log("here");
@@ -37,24 +37,21 @@ router.post(
           console.error("Error", err);
           throw err;
         }
-        // console.log("Fields", fields);
-        // console.log("Files", files);
-        res.sendStatus(200);
-        // const newPost = new Posts({
-        //   image: {
-        //     data: fs.readFileSync(files.image.path),
-        //     contentType: "image/png"
-        //   },
-        //   comments: [{ user: fields.user, text: fields.text }],
-        //   user: fields.user
-        // });
-        // newPost
-        //   .save()
-        //   .then(post => res.json(post))
-        //   .catch(err => res.json(err));
+        console.log("heree");
+        const newPost = new Posts({
+          image: "lala",
+          comments: [{ user: fields.user._id, text: fields.text }],
+          user: fields.user._id
+        });
+        console.log("this bit");
+        console.log(newPost);
+        newPost
+          .save()
+          .then(post => res.json(post))
+          .catch(err => res.json(err));
       })
       .on("fileBegin", function(name, file) {
-        // console.log("file");
+        console.log("file");
         // console.log(file.path);
         file.path = __dirname + "/uploads/" + file.name;
       })
