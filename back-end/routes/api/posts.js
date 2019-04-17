@@ -29,36 +29,30 @@ router.post(
   "/",
   passport.authenticate("jwt", { session: false }),
   (req, res) => {
-    console.log("this");
     new formidable.IncomingForm()
       .parse(req, (err, fields, files) => {
-        console.log("here");
         if (err) {
           console.error("Error", err);
           throw err;
         }
-        console.log("heree");
+        console.log(fields);
         const newPost = new Posts({
-          image: "lala",
-          comments: [{ user: fields.user._id, text: fields.text }],
+          image: `${files.image.name}`,
+          comments: [{ user: fields.user, text: fields.text }],
           user: fields.user._id
         });
-        console.log("this bit");
         console.log(newPost);
         newPost
           .save()
           .then(post => res.json(post))
-          .catch(err => res.json(err));
+          .catch(err => console.log(err) || res.json(err));
       })
       .on("fileBegin", function(name, file) {
-        console.log("file");
-        // console.log(file.path);
-        file.path = __dirname + "/uploads/" + file.name;
+        file.path = __dirname + `../../../uploads/images/${file.name}`;
       })
       .on("file", function(name, file) {
-        console.log("Uploaded " + file.name);
+        //
       });
-
     //validation
   }
 );

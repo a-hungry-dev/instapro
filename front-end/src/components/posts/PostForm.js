@@ -11,7 +11,6 @@ export class PostForm extends Component {
 
     this.state = {
       text: "",
-      image: "",
       //change to allow multiple files
       file: null,
       errors: {}
@@ -28,16 +27,8 @@ export class PostForm extends Component {
     const { user } = this.props.auth;
     const fd = new FormData();
     fd.append("image", this.state.file);
-    
     fd.append("text", this.state.text);
-    fd.append("user", user);
-    // const newPost = {
-    //   text: this.state.text,
-    //   image: "image",
-    //   user: user,
-    //   file: this.state.file
-    // };
-
+    fd.append("user", user.id);
     this.props.addPost(fd);
     this.setState({ text: "", image: "", file: null });
   }
@@ -50,32 +41,16 @@ export class PostForm extends Component {
 
     return (
       <div className="post-form mb-3">
-        <input
-          style={{ display: "none" }}
-          type="file"
-          onChange={this.handleFileSelect}
-          ref={fileUpload => (this.fileUpload = fileUpload)}
-        />
-        <i
-          className="fas fa-file-upload fa-5x"
-          onClick={() => this.fileUpload.click()}
-        />
-        {/* <form action="/api/posts" method="post" enctype="multipart/form-data">
-          <input type="file" name="avatar" />
-          <input
-            type="submit"
-            value="Share"
-            className="btn btn-info btn-block mt-4"
-          />
-        </form> */}
         <form noValidate onSubmit={this.onSubmit}>
-          <TextFieldGroup
-            placeholder="Image"
-            name="image"
-            type="text"
-            value={this.state.image}
-            onChange={this.onChange}
-            error={errors.image}
+          <input
+            style={{ display: "none" }}
+            type="file"
+            onChange={this.handleFileSelect}
+            ref={fileUpload => (this.fileUpload = fileUpload)}
+          />
+          <i
+            className="fas fa-file-upload fa-5x"
+            onClick={() => this.fileUpload.click()}
           />
           <TextFieldGroup
             placeholder="Write a caption"

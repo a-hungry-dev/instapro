@@ -12,7 +12,7 @@ const TextFieldGroup = ({
 }) => {
   //maybe info, for required text or help? and disabled if they need to be? maybe label also
   return (
-    <div className="form-grou">
+    <div className="form-group">
       <input
         type={type}
         className={classnames("form-control mb-1", {
