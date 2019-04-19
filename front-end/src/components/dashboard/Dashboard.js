@@ -6,6 +6,7 @@ import { connect } from "react-redux";
 // import PrivateRoute from "../common/PrivateRoute";
 
 import Posts from "../posts/Posts";
+import PostForm from "../posts/PostForm";
 
 import Navbar from "../layout/Navbar";
 //dashboard
@@ -28,6 +29,8 @@ export class Dashboard extends Component {
               <Posts />
             </div>
             <div className="col-md-4">
+              <PostForm />
+
               <p>Me</p>
               <p>Stories</p>
               <p>Suggestions</p>

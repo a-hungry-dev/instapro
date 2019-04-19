@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-// import classNames from "classnames";
-// import { Link } from "react-router-dom";
 import checkDate from "../../utils/checkDate";
 //like post, flat post, add comment, actions(report innappropritate, unfoolow, go to post, cancel)
 

@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 // import { logoutUser } from "../../actions/AuthActions";
 
-// import SearchInputGroup from "../common/SearchInputGroup";
+import SearchInputGroup from "../common/SearchInputGroup";
 
 export class Navbar extends Component {
   constructor() {
@@ -21,7 +21,7 @@ export class Navbar extends Component {
   }
 
   render() {
-    // const { errors } = this.state;
+    const { errors } = this.state;
     return (
       <nav className="navbar navbar-bottom navbar-expand-sm navbar-light bg-white">
         <div className="container">
@@ -42,15 +42,15 @@ export class Navbar extends Component {
             <ul className="navbar-nav ml-auto">
               <li className="nav-item">
                 {
-                  // <SearchInputGroup
-                  //   placeholder="Search..."
-                  //   name="search"
-                  //   icon="fas fa-search"
-                  //   type="text"
-                  //   value={this.state.name}
-                  //   onChange={this.onChange}
-                  //   error={errors.name}
-                  // />
+                  <SearchInputGroup
+                    placeholder="Search..."
+                    name="search"
+                    icon="fas fa-search"
+                    type="text"
+                    value={this.state.name}
+                    onChange={this.onChange}
+                    errors={errors.name}
+                  />
                 }
               </li>
             </ul>
