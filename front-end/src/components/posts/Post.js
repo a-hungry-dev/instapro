@@ -37,10 +37,7 @@ export class Post extends Component {
           <div>User: {post.user}</div>
           <div className="float-right">Actions</div>
         </div>
-        <img
-          src={`http://localhost/uploads/images/${post.image}`}
-          alt={post.image}
-        />
+        <img src={post.image} alt={post.image} />
         {/* <div className="row">Image: {`http://localhost/${post.image}`}</div> */}
         <div className="row">
           {" "}

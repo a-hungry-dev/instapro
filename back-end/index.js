@@ -31,6 +31,11 @@ require("./config/passport")(passport);
 app.use("/api/users", users);
 app.use("/api/posts", posts);
 
+app.use(express.static(__dirname));
+app.use("/uploads", express.static(__dirname + "/uploads"));
+app.use("/uploads/", express.static(__dirname + "/uploads/"));
+app.use("/uploads/images", express.static(__dirname + "/uploads/images"));
+
 const port = process.env.PORT || 5000;
 
 app.listen(port, () => {

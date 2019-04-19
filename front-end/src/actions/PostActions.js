@@ -24,7 +24,6 @@ export const getPosts = () => dispatch => {
 
 export const addPost = newPost => dispatch => {
   dispatch(postLoading());
-  console.log(newPost);
   Axios.post("/api/posts", newPost)
     .then(res => dispatch({ type: ADD_POST, payload: res.data }))
     .catch(err => dispatch({ type: GET_ERRORS, payload: {} }));
